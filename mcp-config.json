@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "onesila": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://onesila.app/mcp/",
+        "--header",
+        "Authorization: Bearer ${ONESILA_MCP_TOKEN}"
+      ]
+    }
+  }
+}

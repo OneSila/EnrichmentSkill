@@ -216,3 +216,43 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# AI coding agents — local config, state and credentials
+#   This repo ships skills FOR these tools, so skill/prompt content stays tracked
+#   (see the re-includes at the bottom). Only machine-local config is ignored.
+
+# Claude Code
+.claude.json
+.claude.json.backup
+.claude/settings.local.json
+.claude/*.local.json
+.claude/history.jsonl
+.claude/ide/
+.claude/projects/
+.claude/shell-snapshots/
+.claude/statsig/
+.claude/todos/
+.claude/memory/
+CLAUDE.local.md
+.mcp.json
+
+# Gemini CLI
+.gemini/settings.json
+.gemini/*.local.json
+.gemini/oauth_creds.json
+.gemini/google_accounts.json
+.gemini/installation_id
+.gemini/tmp/
+GEMINI.local.md
+
+# OpenAI Codex
+.codex/auth.json
+.codex/config.toml
+.codex/history.jsonl
+.codex/sessions/
+codex.local.toml
+AGENTS.local.md
+
+# This repo ships as a Claude Code plugin: the published content lives in
+# skills/, .claude-plugin/ and mcp-config.json at the repo root, none of which
+# are ignored above. Only machine-local agent config is excluded.

@@ -1,0 +1,13 @@
+{
+  "name": "onesila-enrichment",
+  "displayName": "OneSila Enrichment",
+  "description": "Skills for enriching product information via OneSila: property schema management, product enrichment, sales-channel mapping, and integration diagnostics.",
+  "version": "0.1.0",
+  "author": {
+    "name": "OneSila"
+  },
+  "repository": "https://github.com/onesila/EnrichmentSkill",
+  "license": "MIT",
+  "keywords": ["onesila", "pim", "product-enrichment", "ecommerce", "mcp"],
+  "mcpServers": "./mcp-config.json"
+}
