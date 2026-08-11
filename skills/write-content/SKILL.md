@@ -54,7 +54,12 @@ Languages come from `get_company_details(show_languages=true)` — never hard-co
 | `description` | **HTML** — see the formatting rule below. |
 | `bullet_points` | Array of strings, one claim each. |
 
-`url_key` is returned when you read a product but is **not writable** through `upsert_products`. Don't try to set it; slugs are managed elsewhere.
+**Out of reach — do not go looking for a tool for these:**
+
+- `url_key` (the slug) is returned when you read a product but is **not writable** through `upsert_products`.
+- **SEO title, SEO description and meta keywords are not exposed over MCP at all** — not readable, not writable. They exist on the product in the OneSila UI (with their own Generate buttons), but no tool on this server can see or set them.
+
+That means a product leaving this stage still has its SEO fields empty, and only a human working in the UI can fill them. **Say so explicitly in your collaboration note every run**, so the next person knows the content stage is complete only as far as the API allows.
 
 **On a configurable product, write the parent only.** The parent is the listing customers read; variations inherit it. Read the variations for evidence — they carry the sizes, colours and materials worth mentioning — but write content only to the parent.
 
@@ -235,6 +240,6 @@ Then stop and give a one or two sentence summary: the SKU, which languages you w
 - Author each language natively; same facts everywhere, phrasing free.
 - `description` is HTML; `bullet_points` is an array of plain strings; `url_key` is not writable.
 - Configurables: parent only — the reverse of the attribute-filling rule.
-- The note says what you changed, never the copy itself.
+- The note says what you changed, never the copy itself, and always states that SEO title, SEO description and meta keywords remain empty and need doing in the UI.
 - Reads omit empty fields; a missing field is "not set", not a failed write.
 - Always leave a readable note, then advance the workflow.
