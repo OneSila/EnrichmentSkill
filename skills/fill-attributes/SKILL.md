@@ -3,16 +3,16 @@ name: fill-attributes
 description: "Fill out product attribute values for one OneSila product sitting in the populate-attributes workflow state, then hand it on for verification. Use whenever the user wants to enrich, complete, or fill in attributes / properties — e.g. \"populate attributes on the next product\", \"fill attributes for the next product\", \"work the new products queue\", \"do an attribute-filling pass\", \"complete the properties on the next product\", \"grab a product from populate attributes and finish it\". Fully autonomous: pulls one product, fixes duplicate variations if needed, fills required and optional attribute values on the variations (or the product itself if it is not configurable), leaves a human-readable note on the collaboration board, and advances the workflow. Processes exactly one product per run unless the user explicitly asks for more."
 argument-hint: "[sku]"
 allowed-tools:
-  - mcp__plugin_onesila_onesila__get_company_details
-  - mcp__plugin_onesila_onesila__search_products
-  - mcp__plugin_onesila_onesila__get_product
-  - mcp__plugin_onesila_onesila__search_properties
-  - mcp__plugin_onesila_onesila__get_property
-  - mcp__plugin_onesila_onesila__search_property_select_values
-  - mcp__plugin_onesila_onesila__get_property_select_value
-  - mcp__plugin_onesila_onesila__create_property_select_values
-  - mcp__plugin_onesila_onesila__upsert_products
-  - mcp__plugin_onesila_onesila__create_product_collaboration_entry
+  - mcp__claude_ai_OneSila_PIM__get_company_details
+  - mcp__claude_ai_OneSila_PIM__search_products
+  - mcp__claude_ai_OneSila_PIM__get_product
+  - mcp__claude_ai_OneSila_PIM__search_properties
+  - mcp__claude_ai_OneSila_PIM__get_property
+  - mcp__claude_ai_OneSila_PIM__search_property_select_values
+  - mcp__claude_ai_OneSila_PIM__get_property_select_value
+  - mcp__claude_ai_OneSila_PIM__create_property_select_values
+  - mcp__claude_ai_OneSila_PIM__upsert_products
+  - mcp__claude_ai_OneSila_PIM__create_product_collaboration_entry
   - WebSearch
 ---
 
@@ -35,9 +35,9 @@ These are the deployment-specific values. Confirm them against `get_company_deta
 | Workflow code | `NEW_PRODUCTS` |
 | Source state (pull from) | `NEW_PRODUCTS_POPULATE_ATTRIBUTES` |
 | Target state (hand on to) | `NEW_PRODUCTS_VERIFY_ATTRIBUTES` |
-| Tool prefix (from the OneSila plugin) | `mcp__plugin_onesila_onesila__` |
+| Tool prefix (from the OneSila PIM connector) | `mcp__claude_ai_OneSila_PIM__` |
 
-The tool names in `allowed-tools` come from the OneSila plugin in the Claude directory, which this plugin depends on. Its tools are named `mcp__plugin_onesila_onesila__get_product` and so on. If OneSila reaches the host some other way — a claude.ai connector, a local server, a demo tenant — the tools get a different prefix. The skill still works, but every call asks for permission. Update the frontmatter to the prefix actually in use.
+The tool names in `allowed-tools` come from the OneSila PIM connector in the Claude directory, which this plugin depends on. Its tools are named `mcp__claude_ai_OneSila_PIM__get_product` and so on. If OneSila reaches the host some other way — a local server, a demo tenant, a connector under another name — the tools get a different prefix. The skill still works, but every call asks for permission. Update the frontmatter to the prefix actually in use.
 
 House rules — the doubt defaults and deterministic rules in Step 3 — are commercial policy, not OneSila behaviour. They are tuned for a costume/apparel catalogue. Review them before running against a different product mix; **country of origin in particular is a customs declaration**, not a formatting preference.
 

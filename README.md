@@ -60,8 +60,8 @@ work the write content queue
 
 ## Installation
 
-This is a skills-only Claude plugin. The connection to OneSila comes from the **OneSila plugin**
-in the Claude directory, so install that first and sign in through it. This plugin brings no
+This is a skills-only Claude plugin. The connection to OneSila comes from the **OneSila PIM**
+connector in the Claude directory, so add that first and sign in through it. This plugin brings no
 server and needs no token.
 
 ## Configuration
@@ -73,9 +73,9 @@ different catalogue you should edit those tables.
 
 Two things to check before running against a different product mix:
 
-- **The tool prefix.** Tool names in each skill's `allowed-tools` use the OneSila plugin's prefix
-  (`mcp__plugin_onesila_onesila__get_product`). If OneSila reaches the host another way — a claude.ai
-  connector, a local server, a demo tenant — the tools get a different prefix. The skills still run,
+- **The tool prefix.** Tool names in each skill's `allowed-tools` use the OneSila PIM connector's prefix
+  (`mcp__claude_ai_OneSila_PIM__get_product`). If OneSila reaches the host another way — a local server,
+  a demo tenant, a connector under another name — the tools get a different prefix. The skills still run,
   but every call asks for permission until you update the frontmatter.
 - **The house rules in `fill-attributes`.** The doubt defaults and deterministic rules are commercial
   policy, not OneSila behaviour, and are tuned for a costume/apparel catalogue. Country of origin in

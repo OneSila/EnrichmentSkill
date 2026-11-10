@@ -3,15 +3,15 @@ name: write-content
 description: "Write the default product content — name, subtitle, short description, description and bullet points — in every configured language for one OneSila product sitting in the write-content workflow state, then hand it on. Use whenever the user wants to write, generate, or complete product content / copy / descriptions — e.g. \"write content for the next product\", \"do a content pass\", \"work the write content queue\", \"write the descriptions on the next product\", \"grab a product from write content and finish it\". Fully autonomous: pulls one product, reads its attributes, existing copy, images and brand voice, writes the missing languages, leaves a human-readable note on the collaboration board, and advances the workflow. Processes exactly one product per run unless the user explicitly asks for more."
 argument-hint: "[sku]"
 allowed-tools:
-  - mcp__plugin_onesila_onesila__get_company_details
-  - mcp__plugin_onesila_onesila__search_products
-  - mcp__plugin_onesila_onesila__get_product
-  - mcp__plugin_onesila_onesila__search_properties
-  - mcp__plugin_onesila_onesila__get_property
-  - mcp__plugin_onesila_onesila__search_property_select_values
-  - mcp__plugin_onesila_onesila__get_property_select_value
-  - mcp__plugin_onesila_onesila__upsert_products
-  - mcp__plugin_onesila_onesila__create_product_collaboration_entry
+  - mcp__claude_ai_OneSila_PIM__get_company_details
+  - mcp__claude_ai_OneSila_PIM__search_products
+  - mcp__claude_ai_OneSila_PIM__get_product
+  - mcp__claude_ai_OneSila_PIM__search_properties
+  - mcp__claude_ai_OneSila_PIM__get_property
+  - mcp__claude_ai_OneSila_PIM__search_property_select_values
+  - mcp__claude_ai_OneSila_PIM__get_property_select_value
+  - mcp__claude_ai_OneSila_PIM__upsert_products
+  - mcp__claude_ai_OneSila_PIM__create_product_collaboration_entry
   - WebSearch
 ---
 
@@ -34,7 +34,7 @@ Confirm against `get_company_details(show_workflows=true, show_languages=true)` 
 | Workflow code | `NEW_PRODUCTS` |
 | Source state (pull from) | `NEW_PRODUCTS_WRITE_CONTENT` |
 | Target state (hand on to) | `NEW_PRODUCTS_ASSIGN_TO_SALES_CHANNELS` |
-| Tool prefix (from the OneSila plugin) | `mcp__plugin_onesila_onesila__` |
+| Tool prefix (from the OneSila PIM connector) | `mcp__claude_ai_OneSila_PIM__` |
 
 Languages come from `get_company_details(show_languages=true)` — never hard-code the list. Read `enabled_languages` and note which is `is_default`.
 
