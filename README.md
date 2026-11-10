@@ -60,26 +60,23 @@ work the write content queue
 
 ## Installation
 
-This is a Claude Code plugin. It bundles the OneSila MCP server via
-[`mcp-config.json`](mcp-config.json), which needs a `ONESILA_MCP_TOKEN` in the environment:
-
-```sh
-export ONESILA_MCP_TOKEN=<your token>
-```
+This is a skills-only Claude plugin. The connection to OneSila comes from the **OneSila plugin**
+in the Claude directory, so install that first and sign in through it. This plugin brings no
+server and needs no token.
 
 ## Configuration
 
 Each skill has a **Configuration** table at the top of its `SKILL.md` holding the deployment-specific
-values — workflow code, source and target state, and the MCP server name. The skills confirm these
+values — workflow code, source and target state, and the tool prefix. The skills confirm these
 against `get_company_details(show_workflows=true)` at the start of a run, but if you deploy against a
 different catalogue you should edit those tables.
 
 Two things to check before running against a different product mix:
 
-- **The MCP server name.** Tool names in each skill's `allowed-tools` are prefixed with it
-  (`mcp__onesila__get_product`). If OneSila is registered under another name in the host — a second
-  instance or a demo tenant, e.g. `onesila_demo` — the prefixes match no live tool and the skill has
-  nothing to call.
+- **The tool prefix.** Tool names in each skill's `allowed-tools` use the OneSila plugin's prefix
+  (`mcp__plugin_onesila_onesila__get_product`). If OneSila reaches the host another way — a claude.ai
+  connector, a local server, a demo tenant — the tools get a different prefix. The skills still run,
+  but every call asks for permission until you update the frontmatter.
 - **The house rules in `fill-attributes`.** The doubt defaults and deterministic rules are commercial
   policy, not OneSila behaviour, and are tuned for a costume/apparel catalogue. Country of origin in
   particular is a customs declaration, not a formatting preference.

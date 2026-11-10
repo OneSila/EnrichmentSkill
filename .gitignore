@@ -254,5 +254,8 @@ codex.local.toml
 AGENTS.local.md
 
 # This repo ships as a Claude Code plugin: the published content lives in
-# skills/, .claude-plugin/ and mcp-config.json at the repo root, none of which
-# are ignored above. Only machine-local agent config is excluded.
+# skills/ and .claude-plugin/ at the repo root, neither of which is ignored
+# above. Only machine-local agent config is excluded.
+
+# macOS
+.DS_Store
